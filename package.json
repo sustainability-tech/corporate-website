@@ -15,6 +15,9 @@
   "bugs": {
     "url": "https://github.com/sustainability-tech/sustainabilitytech.com/issues"
   },
+  "hexo": {
+    "version": "3.3.7"
+  },
   "homepage": "https://github.com/sustainability-tech/sustainabilitytech.com#readme",
   "dependencies": {
     "hexo": "^3.2.0",
@@ -26,5 +29,5 @@
     "hexo-renderer-stylus": "^0.3.1",
     "hexo-renderer-marked": "^0.2.10",
     "hexo-server": "^0.2.0"
-  }  
+  }
 }
