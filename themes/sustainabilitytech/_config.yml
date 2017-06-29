@@ -6,11 +6,6 @@ menu:
   Mission: /mission
   Products: /products
   Contact: /contact
-rss: /atom.xml
-
-# Content
-excerpt_link: Read More
-fancybox: true
 
 # Miscellaneous
 google_analytics:
