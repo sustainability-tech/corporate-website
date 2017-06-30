@@ -1,0 +1,6 @@
+{
+  "name": "sustainabletech",
+  "scripts": {
+     "start": "npm run prod"
+  }
+}
