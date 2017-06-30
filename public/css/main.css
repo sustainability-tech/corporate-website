@@ -765,6 +765,16 @@ input[type="button"].button-primary {
   color: #FFFFFF;
 }
 
+.button.button-secondary,
+a.button.button-secondary,
+button.button-secondary,
+input[type="submit"].button-secondary,
+input[type="reset"].button-secondary,
+input[type="button"].button-secondary {
+  background: #f9a828;
+  color: #FFFFFF;
+}
+
 .button.button-primary:hover,
 a.button.button-primary:hover,
 button.button-primary:hover,
@@ -1246,32 +1256,23 @@ header .row {
  * ------------------------------------------------------------------- */
 header .header-logo {
   position: absolute;
-  left: 32px;
-  top: 42px;
+  left: 30px;
+  top: 20px;
   -moz-transition: all 1s ease-in-out;
   -o-transition: all 1s ease-in-out;
   -webkit-transition: all 1s ease-in-out;
   -ms-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
+  background-color: #fff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
 }
-header .header-logo a {
-  display: block;
-  margin: 0;
-  padding: 0;
-  outline: 0;
-  border: none;
-  width: 57px;
-  height: 27px;
-  background: url("../images/logo.png") no-repeat center;
-  background-size: 57px 27px;
-  font: 0/0 a;
-  text-shadow: none;
-  color: transparent;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  -webkit-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+header .header-logo img {
+  width: 30px;
 }
 
 /* -------------------------------------------------------------------
@@ -1776,7 +1777,6 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
  *  11. about - (_layout.scss)
  *
  * ------------------------------------------------------------------- */
-#page-content,
 #about {
   position: relative;
   padding: 4.2rem 0 12rem;
@@ -1784,17 +1784,106 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
   min-height: 696px;
   text-align: center;
 }
-#page-content {
-  margin: 0 0 0 0;
+#page-header {
+  margin-top: 80px;
   padding-top: 0;
-  text-align: left;
 }
-#page-content .row {
+#page-header-about {
+  margin: 0;
+  padding-top: 0;
+  background-color: #111;
+  background-image: url(../images/bali.jpg);
+  background-repeat: no-repeat;
+  background-position: center 30%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
+}
+#page-header-about .home-content-tablecell .row {
+  position: relative;
+  padding-top: 22rem;
+  padding-bottom: 21rem;
+}
+#page-header-about .home-content-tablecell h1 {
+  font-size: 4rem;
+}
+#page-header svg,
+#page-header-about svg {
+  margin-bottom: -20px;
+}
+#page-content {
+  padding: 4.2rem 0 12rem;
+  position: relative;
+  background-color: #fff;
   font-size: 1.8rem;
   line-height: 3.5rem;
+}
+#page-content .row {
   max-width: 850px;
   margin: 0 auto;
 }
+#page-content .item {
+  position: relative;
+  padding-left: 100px;
+  margin-bottom: 50px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+#page-content .item .icon {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -3rem;
+}
+#page-content .item .icon i {
+  font-size: 6rem;
+  color: #255F85;
+}
+#page-content .offset-left {
+  float: left;
+  margin: 35px 30px 30px -50px;
+  max-width: 300px;
+}
+#page-content .offset-right {
+  float: right;
+  margin: 35px -50px 30px 30px;
+  max-width: 300px;
+}
+#page-content .item-team {
+  margin-bottom: 100px;
+  text-align: center;
+}
+#page-content .item-team img {
+  width: 200px;
+  border-radius: 50%;
+}
+#page-content .item-team h2 {
+  margin-bottom: 5px;
+}
+#page-content .item-team h5 {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  color: #007F5C;
+}
+#page-content .item-team p {
+  text-align: left;
+}
+#page-content .item-work {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+  margin-bottom: 50px;
+}
+#page-content .item-work img {
+  border: 1px solid #eee;
+  padding: 10px;
+}
+#page-content .item-work small {
+  font-size: 1.4rem;
+  line-height: .7rem;
+}
+
 #about .about-wrap {
   max-width: 850px;
 }

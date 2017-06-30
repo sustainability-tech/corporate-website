@@ -765,6 +765,16 @@ input[type="button"].button-primary {
   color: #FFFFFF;
 }
 
+.button.button-secondary,
+a.button.button-secondary,
+button.button-secondary,
+input[type="submit"].button-secondary,
+input[type="reset"].button-secondary,
+input[type="button"].button-secondary {
+  background: #f9a828;
+  color: #FFFFFF;
+}
+
 .button.button-primary:hover,
 a.button.button-primary:hover,
 button.button-primary:hover,
@@ -1246,32 +1256,23 @@ header .row {
  * ------------------------------------------------------------------- */
 header .header-logo {
   position: absolute;
-  left: 32px;
-  top: 42px;
+  left: 30px;
+  top: 20px;
   -moz-transition: all 1s ease-in-out;
   -o-transition: all 1s ease-in-out;
   -webkit-transition: all 1s ease-in-out;
   -ms-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
+  background-color: #fff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
 }
-header .header-logo a {
-  display: block;
-  margin: 0;
-  padding: 0;
-  outline: 0;
-  border: none;
-  width: 57px;
-  height: 27px;
-  background: url("../images/logo.png") no-repeat center;
-  background-size: 57px 27px;
-  font: 0/0 a;
-  text-shadow: none;
-  color: transparent;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  -webkit-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+header .header-logo img {
+  width: 30px;
 }
 
 /* -------------------------------------------------------------------
@@ -1868,6 +1869,19 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
 }
 #page-content .item-team p {
   text-align: left;
+}
+#page-content .item-work {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+  margin-bottom: 50px;
+}
+#page-content .item-work img {
+  border: 1px solid #eee;
+  padding: 10px;
+}
+#page-content .item-work small {
+  font-size: 1.4rem;
+  line-height: .7rem;
 }
 
 #about .about-wrap {
