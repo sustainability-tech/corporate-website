@@ -1835,16 +1835,6 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
   font-size: 6rem;
   color: #3280b5;
 }
-#page-content .offset-left {
-  float: left;
-  margin: 35px 30px 30px -50px;
-  max-width: 300px;
-}
-#page-content .offset-right {
-  float: right;
-  margin: 35px -50px 30px 30px;
-  max-width: 300px;
-}
 #page-content .item-team {
   margin-bottom: 100px;
   text-align: center;
