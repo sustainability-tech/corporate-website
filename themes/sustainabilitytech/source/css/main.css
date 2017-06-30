@@ -1839,6 +1839,36 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
   font-size: 6rem;
   color: #255F85;
 }
+#page-content .offset-left {
+  float: left;
+  margin: 35px 30px 30px -50px;
+  max-width: 300px;
+}
+#page-content .offset-right {
+  float: right;
+  margin: 35px -50px 30px 30px;
+  max-width: 300px;
+}
+#page-content .item-team {
+  margin-bottom: 100px;
+  text-align: center;
+}
+#page-content .item-team img {
+  width: 200px;
+  border-radius: 50%;
+}
+#page-content .item-team h2 {
+  margin-bottom: 5px;
+}
+#page-content .item-team h5 {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  color: #007F5C;
+}
+#page-content .item-team p {
+  text-align: left;
+}
 
 #about .about-wrap {
   max-width: 850px;

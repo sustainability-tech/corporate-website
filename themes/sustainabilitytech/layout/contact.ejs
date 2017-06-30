@@ -1,0 +1,62 @@
+<section id="contact">
+
+  <div class="overlay"></div>
+
+  <div class="row narrow section-intro with-bottom-sep animate-this">
+    <div class="col-twelve">
+      <h3>Contact</h3>
+      <h1>Get In Touch.</h1>
+      <%- page.content %>
+    </div>
+  </div> <!-- end section-intro -->
+
+  <div class="row contact-content">
+
+    <div class="col-seven tab-full animate-this">
+
+      <h5>Send Us A Message</h5>
+
+      <!-- form -->
+      <form name="contactForm" id="contactForm" method="post" action="https://formspree.io/royniels83@gmail.com">
+        <div class="form-field">
+          <input name="name" type="text" id="contactName" placeholder="Name" value="" minlength="2" required="">
+        </div>
+
+        <div class="row">
+          <div class="col-six tab-full">
+            <div class="form-field">
+              <input name="_replyto" type="email" id="contactEmail" placeholder="Email" value="" required="">
+            </div>
+          </div>
+          <div class="col-six tab-full">
+            <div class="form-field">
+              <input name="subject" type="text" id="contactSubject" placeholder="Subject" value="">
+            </div>
+          </div>
+        </div>
+        <div class="form-field">
+          <textarea name="message" id="contactMessage" placeholder="message" rows="10" cols="50" required=""></textarea>
+        </div>
+        <div class="form-field">
+          <input type="submit" value="Send" class="submitform">
+        </div>
+        <input type="hidden" name="_language" value="en" />
+        <input type="hidden" name="_subject" value="Email from the website" />
+      </form> <!-- end form -->
+    </div> <!-- end col-seven -->
+
+<div class="col-four tab-full contact-info end animate-this">
+
+  <h5>Contact Information</h5>
+
+  <div class="cinfo">
+    <h6>Where to Find Us</h6>
+    <p>Jl. Danau Poso No.51A, Sanur<br>
+      Semawang, Kota Denpasar<br>
+      Bali 80228
+    </p>
+  </div> <!-- end cinfo -->
+
+</div> <!-- end row contact-content -->
+
+</section> <!-- end contact -->
