@@ -39,8 +39,9 @@ EOF
 }
 
 create_nginx_vh_well_known_ln() {
-  sudo cd "$NGINX_ROOT/sites-enabled"
-  sudo ln -s "$NGINX_ROOT/sites-available/well-known" "$NGINX_ROOT/sites-enabled/well-known"
+  echo "Creating well_known Vhost symlink"
+  sudo cd $NGINX_ROOT/sites-enabled
+  sudo ln -s $NGINX_ROOT/sites-available/well-known $NGINX_ROOT/sites-enabled/well-known
 }
 
 create_nginx_vh_domain() {
@@ -66,8 +67,9 @@ EOF
 }
 
 create_nginx_vh_domain_ln() {
-  sudo cd "$NGINX_ROOT/sites-enabled"
-  sudo ln -s "$NGINX_ROOT/sites-available/$DOMAIN" "$NGINX_ROOT/sites-enabled/$DOMAIN"
+  echo "Creating domain Vhost symlink"
+  sudo cd $NGINX_ROOT/sites-enabled
+  sudo ln -s $NGINX_ROOT/sites-available/$DOMAIN" "$NGINX_ROOT/sites-enabled/$DOMAIN
 }
 
 restart_nginx() {
