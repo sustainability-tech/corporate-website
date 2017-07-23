@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /contact
+Allow: /solutions
+Allow: /team
+Allow: /work
+Sitemap: /sitemap.xml
