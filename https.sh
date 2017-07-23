@@ -28,36 +28,8 @@ setting_webroot() {
   fi
 }
 
-create_nginx_vh_well_known() {
-  echo "### Creating NGINX Vhost for well-known"
-  sudo tee "$NGINX_ROOT/sites-available/well-known" > /dev/null << EOF
-  server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-
-    root $WEBROOT;
-
-    location ~ /.well-known {
-      allow all;
-    }
-  }
-EOF
-}
-
-create_nginx_vh_well_known_ln() {
-  echo "### Creating well_known Vhost symlink"
-  cd $NGINX_ROOT/sites-enabled
-  sudo rm -rf well-known
-  sudo ln -s $NGINX_ROOT/sites-available/well-known $NGINX_ROOT/sites-enabled/well-known
-}
-
-remove_well_known() {
-  sudo rm -rf $NGINX_ROOT/sites-enabled/well-known
-  sudo rm -rf $NGINX_ROOT/sites-available/well-known
-}
-
-create_nginx_vh_domain() {
-  echo "### Creating nginx domain vhost"
+create_nginx_vh_default() {
+  echo "### Creating nginx default vhost"
   sudo tee "$NGINX_ROOT/sites-available/$DOMAIN" > /dev/null << EOF
   server {
     listen 80 default_server;
@@ -65,11 +37,32 @@ create_nginx_vh_domain() {
     listen 443 ssl http2 default_server;
     listen [::]:443 ssl http2 default_server;
 
+    server_name _;
+    return 301 https://$host$request_uri;
+  }
+EOF
+}
+
+create_nginx_vh_default_ln() {
+  echo "### Creating nginx default Vhost symlink"
+  cd $NGINX_ROOT/sites-enabled
+  sudo rm -rf $DOMAIN
+  sudo ln -s $NGINX_ROOT/sites-available/$DOMAIN $NGINX_ROOT/sites-enabled/default
+}
+
+create_nginx_vh_domain() {
+  echo "### Creating nginx domain vhost"
+  sudo tee "$NGINX_ROOT/sites-available/$DOMAIN" > /dev/null << EOF
+  server {
     server_name $DOMAIN www.$DOMAIN;
     include snippets/ssl-$DOMAIN.conf;
     include snippets/ssl-dh-$DOMAIN.conf;
 
     root $WEBROOT;
+
+    location ~ /.well-known {
+      allow all;
+    }
 
     location / {
       try_files \$uri \$uri/index.html;
@@ -150,8 +143,8 @@ if ! hash certbot 2>/dev/null; then
   install_certbot
 fi
 setting_webroot
-create_nginx_vh_well_known
-create_nginx_vh_well_known_ln
+create_nginx_vh_default
+create_nginx_vh_default
 restart_nginx
 create_certificates
 create_diffie_hellman
