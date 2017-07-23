@@ -9,6 +9,27 @@ WEBROOT_WELL_KNOWN_DIR="$WEBROOT/.well-known"
 NGINX_SITES_AVAILABLE="$NGINX_ROOT/sites-available"
 NGINX_SITES_ENABLED="$NGINX_ROOT/sites-enabled"
 
+check_params() {
+  if [ -z "$1" ]
+    then
+      echo "Missing webroot"
+      echo "Usage ./https.sh WEBROOT DOMAIN NGINXROOT"
+      exit 1;
+  fi
+  if [ -z "$2" ]
+    then
+      echo "Missing domain name"
+      echo "Usage ./https.sh WEBROOT DOMAIN NGINXROOT"
+      exit 1;
+  fi
+  if [ -z "$1" ]
+    then
+      echo "Missing nginx root"
+      echo "Usage ./https.sh WEBROOT DOMAIN NGINXROOT"
+      exit 1;
+  fi
+}
+
 install_certbot() {
   echo "### Certbot not found, installing"
   echo "### Adding repo"
@@ -113,6 +134,7 @@ create_ssl_snippet_dh() {
 EOF
 }
 
+check_params
 if ! hash certbot 2>/dev/null; then
   echo "### Certbot already installed, skipping"
   install_certbot
@@ -128,4 +150,5 @@ create_nginx_vh_domain
 restart_nginx
 echo "### SUCCESS!"
 echo "Please add the following line to crontab for auto renewal (if not already there):"
+echo "sudo crontab -e"
 echo '15 3 * * * /usr/bin/certbot renew --quiet --renew-hook "/bin/systemctl reload nginx"'
