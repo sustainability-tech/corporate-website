@@ -126,3 +126,6 @@ create_ssl_snippet
 create_ssl_snippet_dh
 create_nginx_vh_domain
 restart_nginx
+echo "### SUCCESS!"
+echo "Please add the following line to crontab for auto renewal (if not already there):"
+echo '15 3 * * * /usr/bin/certbot renew --quiet --renew-hook "/bin/systemctl reload nginx"'
