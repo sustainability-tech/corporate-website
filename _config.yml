@@ -69,3 +69,21 @@ theme: sustainabilitytech
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:
+
+plugins:
+- hexo-generator-robotstxt
+
+robotstxt:
+  useragent: "*"
+  allow:
+    - /about/index.html
+    - /contact/index.html
+    - /solutions/index.html
+    - /team/index.html
+    - /work/index.html
+    - /index.html
+  sitemap: /sitemap.xml
+
+sitemap:
+    path: sitemap.xml
+    template: ./sitemap_template.xml
