@@ -51,6 +51,11 @@ create_nginx_vh_well_known_ln() {
   sudo ln -s $NGINX_ROOT/sites-available/well-known $NGINX_ROOT/sites-enabled/well-known
 }
 
+remove_well_known() {
+  sudo rm -rf $NGINX_ROOT/sites-enabled/well-known
+  sudo rm -rf $NGINX_ROOT/sites-available/well-known
+}
+
 create_nginx_vh_domain() {
   echo "### Creating nginx domain vhost"
   sudo tee "$NGINX_ROOT/sites-available/$DOMAIN" > /dev/null << EOF
@@ -64,7 +69,7 @@ create_nginx_vh_domain() {
     include snippets/ssl-$DOMAIN.conf;
     include snippets/ssl-dh-$DOMAIN.conf;
 
-    root $WEBROOT
+    root $WEBROOT;
 
     location / {
       try_files \$uri \$uri/index.html;
@@ -77,7 +82,7 @@ create_nginx_vh_domain_ln() {
   echo "### Creating domain Vhost symlink"
   cd $NGINX_ROOT/sites-enabled
   sudo rm -rf $DOMAIN
-  sudo ln -s $NGINX_ROOT/sites-available/$DOMAIN" "$NGINX_ROOT/sites-enabled/$DOMAIN
+  sudo ln -s $NGINX_ROOT/sites-available/$DOMAIN $NGINX_ROOT/sites-enabled/$DOMAIN
 }
 
 restart_nginx() {
@@ -152,6 +157,7 @@ create_certificates
 create_diffie_hellman
 create_ssl_snippet
 create_ssl_snippet_dh
+remove_well_known
 create_nginx_vh_domain
 create_nginx_vh_domain_ln
 restart_nginx

@@ -18,15 +18,9 @@
     <script type="application/ld+json">
     {
       "@context": "http://schema.org",
-      "@type": "Organization",
-      "url": "http://sustainabilitytech.com",
-      "logo": "http://sustainabilitytech.com/images/logo.png",
-      "contactPoint": [{
-        "@type": "ContactPoint",
-        "telephone": "+6281293846539",
-        "contactType": "sales",
-        "availableLanguage": ["English", "German"]
-      }]
+      "@type": "WebSite",
+      "name": "Your WebSite Name",
+      "url": "https://www.sustainabilitytech.com"
     }
     </script>
   </head>
@@ -50,7 +44,50 @@
         </ul>
       </nav>
     </header>
-    <section id="page-header">
+    <script type="application/ld+json">
+  [{
+    "@context": "http://schema.org",
+    "@type": "Person",
+    "familyName": "Niels",
+    "givenName": "Roy",
+    "gender": "male",
+    "jobTitle": "CTO",
+    "image": "https://www.sustainabilitytech.com/images/royniels.jpg",
+    "nationality": "The Netherlands",
+    "memberOf": {
+      "@type": "Organization",
+      "sameAs": "https://www.sustainabilitytech.com/contact"
+    }
+  }, {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "familyName": "Persch",
+      "givenName": "Sebastian",
+      "gender": "male",
+      "jobTitle": "CEO",
+      "image": "https://www.sustainabilitytech.com/images/sebastianpersch.jpg",
+      "nationality": "Germany",
+      "memberOf": {
+        "@type": "Organization",
+        "sameAs": "https://www.sustainabilitytech.com/contact"
+      }
+  }, {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "familyName": "Vianen",
+      "givenName": "Josh",
+      "gender": "male",
+      "jobTitle": "Co-founder",
+      "image": "https://www.sustainabilitytech.com/images/joshvanvianen.jpg",
+      "nationality": "New Zealand",
+      "memberOf": {
+        "@type": "Organization",
+        "sameAs": "https://www.sustainabilitytech.com/contact"
+      }
+  }]
+</script>
+
+<section id="page-header">
   <svg viewBox="0 -20 700 110" width="100%" height="110" preserveAspectRatio="none">
    <path d="M0,10 c80,-18 230,-12 350,7 c80,13 260,17 350,-5 v100 h-700z" fill="#ffffff" />
  </svg>
@@ -61,7 +98,7 @@
     <div class="col-full">
 
       <div class="item-team">
-        <img src="/images/sebastian.jpg" alt="Sebastian Persch" />
+        <img src="/images/sebastianpersch.jpg" alt="Sebastian Persch" />
         <h2>Sebastian Persch</h2>
         <h5>Co-Founder</h5>
         <p>Sebastian strongly believes that recent technological advances should and needs to be made available for practitioners of sustainable practices—in particular smallholder farmers— in order to make the entry into sustainable certification easier, more transparent and less costly. Without technological innovation in these areas, truly sustainable tropical landscapes will remain out of reach.</p>
@@ -69,7 +106,7 @@
       </div>
 
       <div class="item-team">
-        <img src="/images/josh.jpg" alt="Josh van Vianen" />
+        <img src="/images/joshvanvianen.jpg" alt="Josh van Vianen" />
         <h2>Josh van Vianen</h2>
         <h5>Co-Founder</h5>
         <p>Josh strongly believes in the potential of technological solutions to engender equitable, transparent and sustainable landscapes. Through providing simple and knowledge driven applications, better engaged stakeholder communities can be empowered to contribute towards higher sustainability standards and certifications for the benefit of both local people and the environment.</p>
@@ -77,7 +114,7 @@
       </div>
 
       <div class="item-team">
-        <img src="/images/roy-edit.jpg" alt="Roy Niels" />
+        <img src="/images/royniels.jpg" alt="Roy Niels" />
         <h2>Roy Niels</h2>
         <h5>Co-Founder</h5>
         <p>Roy strongly believes that there are still great steps to be made in bringing technological solutions to the field of sustainability. Where companies working in these fields might not always have the technical know how to streamline these processes, he thinks that Sustainability Tech can make a significant difference and raise the field of sustainability to a new level.</p>
