@@ -53,7 +53,7 @@ create_nginx_vh_domain() {
   server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
-    
+
     server_name $DOMAIN www.$DOMAIN;
     include snippets/ssl-$DOMAIN.conf;
     include snippets/ssl-dh-$DOMAIN.conf;
@@ -87,7 +87,7 @@ restart_nginx() {
 
 create_certificates() {
   echo "### Creating letsencrypt certificates"
-  if ! sudo certbot certonly --webroot --webroot-path=$WEBROOT -d $DOMAIN; -d www.$domain then
+  if ! sudo certbot certonly --webroot --webroot-path=$WEBROOT -d $DOMAIN -d www.$domain; then
     exit 1
   fi
 }
