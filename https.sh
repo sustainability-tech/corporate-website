@@ -31,6 +31,8 @@ create_nginx_vh_well_known() {
   echo "### Creating NGINX Vhost for well-known"
   sudo tee "$NGINX_ROOT/sites-available/well-known" > /dev/null << EOF
   server {
+    root $WEBROOT
+
     location ~ /.well-known {
       allow all;
     }
