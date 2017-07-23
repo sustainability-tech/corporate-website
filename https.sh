@@ -124,7 +124,8 @@ restart_nginx() {
 
 create_certificates() {
   echo "### Creating letsencrypt certificates"
-  if ! sudo certbot certonly --staging --break-my-certs --webroot --webroot-path=$WEBROOT -d $DOMAIN -d www.$DOMAIN; then
+  # if ! sudo certbot certonly --staging --break-my-certs --webroot --webroot-path=$WEBROOT -d $DOMAIN -d www.$DOMAIN; then
+  if ! sudo certbot certonly --webroot --webroot-path=$WEBROOT -d $DOMAIN -d www.$DOMAIN; then
     exit 1
   fi
 }
