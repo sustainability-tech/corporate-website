@@ -5,8 +5,6 @@ DOMAIN=$2
 NGINX_ROOT=$3
 NGINX_VH_WELL_KNOWN="well-known"
 WEBROOT_WELL_KNOWN_DIR="$WEBROOT/.well-known"
-NGINX_SITES_AVAILABLE="$NGINX_ROOT/sites-available"
-NGINX_SITES_ENABLED="$NGINX_ROOT/sites-enabled"
 
 install_certbot() {
   echo "### Certbot not found, installing"
@@ -40,6 +38,11 @@ create_nginx_vh_well_known() {
 EOF
 }
 
+create_nginx_vh_well_known_ln() {
+  sudo cd "$NGINX_ROOT/sites-enabled"
+  sudo ln -s "$NGINX_ROOT/sites-available/well-known" "$NGINX_ROOT/sites-enabled/well-known"
+}
+
 create_nginx_vh_domain() {
   echo "### Creating nginx domain vhost"
   sudo tee "$NGINX_ROOT/sites-available/$DOMAIN" > /dev/null << EOF
@@ -60,6 +63,11 @@ create_nginx_vh_domain() {
     }
   }
 EOF
+}
+
+create_nginx_vh_domain_ln() {
+  sudo cd "$NGINX_ROOT/sites-enabled"
+  sudo ln -s "$NGINX_ROOT/sites-available/$DOMAIN" "$NGINX_ROOT/sites-enabled/$DOMAIN"
 }
 
 restart_nginx() {
@@ -128,12 +136,14 @@ if ! hash certbot 2>/dev/null; then
 fi
 setting_webroot
 create_nginx_vh_well_known
+create_nginx_vh_well_known_ln
 restart_nginx
 create_certificates
 create_diffie_hellman
 create_ssl_snippet
 create_ssl_snippet_dh
 create_nginx_vh_domain
+create_nginx_vh_domain_ln
 restart_nginx
 echo "### SUCCESS!"
 echo "Please add the following line to crontab for auto renewal (if not already there):"
