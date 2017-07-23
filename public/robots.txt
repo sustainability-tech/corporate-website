@@ -5,5 +5,4 @@ Allow: /contact
 Allow: /solutions
 Allow: /team
 Allow: /work
-
-Sitemap: https://www.sustainabilitytech.com/sitemap.xml
+Sitemap: /sitemap.xml
