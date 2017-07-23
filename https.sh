@@ -35,6 +35,11 @@ create_nginx_vh_default() {
     listen 80;
     listen [::]:80;
     server_name _;
+
+    location ~ /.well-known {
+      allow all;
+    }
+
     return 301 https://$host$request_uri;
   }
 EOF
@@ -60,10 +65,6 @@ create_nginx_vh_domain() {
 
     root $WEBROOT;
 
-    location ~ /.well-known {
-      allow all;
-    }
-
     location / {
       try_files \$uri \$uri/index.html;
     }
@@ -87,7 +88,7 @@ restart_nginx() {
 
 create_certificates() {
   echo "### Creating letsencrypt certificates"
-  if ! sudo certbot certonly --webroot --webroot-path=$WEBROOT -d $DOMAIN -d www.$DOMAIN; then
+  if ! sudo certbot certonly --staging --webroot --webroot-path=$WEBROOT -d $DOMAIN -d www.$DOMAIN; then
     exit 1
   fi
 }
