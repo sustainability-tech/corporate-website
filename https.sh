@@ -32,11 +32,8 @@ create_nginx_vh_default() {
   echo "### Creating nginx default vhost"
   sudo tee "$NGINX_ROOT/sites-available/$DOMAIN" > /dev/null << EOF
   server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-    listen 443 ssl http2 default_server;
-    listen [::]:443 ssl http2 default_server;
-
+    listen 80;
+    listen [::]:80;
     server_name _;
     return 301 https://$host$request_uri;
   }
@@ -54,6 +51,9 @@ create_nginx_vh_domain() {
   echo "### Creating nginx domain vhost"
   sudo tee "$NGINX_ROOT/sites-available/$DOMAIN" > /dev/null << EOF
   server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    
     server_name $DOMAIN www.$DOMAIN;
     include snippets/ssl-$DOMAIN.conf;
     include snippets/ssl-dh-$DOMAIN.conf;
@@ -87,7 +87,7 @@ restart_nginx() {
 
 create_certificates() {
   echo "### Creating letsencrypt certificates"
-  if ! sudo certbot certonly --webroot --webroot-path=$WEBROOT -d $DOMAIN; then
+  if ! sudo certbot certonly --webroot --webroot-path=$WEBROOT -d $DOMAIN; -d www.$domain then
     exit 1
   fi
 }
