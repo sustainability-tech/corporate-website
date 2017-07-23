@@ -71,7 +71,9 @@ restart_nginx() {
 
 create_certificates() {
   echo "### Creating letsencrypt certificates"
-  sudo certbot certonly --webroot --webroot-path=$WEBROOT -d $DOMAIN
+  if ! sudo certbot certonly --webroot --webroot-path=$WEBROOT -d $DOMAIN; then
+    exit 1
+  fi
 }
 
 create_diffie_hellman() {
@@ -115,7 +117,7 @@ EOF
 clear
 echo "WEBROOT: $1"
 echo "DOMAIN: $2"
-echo "NGINX_ROOT: $3"
+echo "NGINX_ROOT  : $3"
 if ! [[ "$#" -eq 3 ]] ; then
   echo "Usage ./https.sh WEBROOT DOMAIN NGINXROOT"
   exit 1
