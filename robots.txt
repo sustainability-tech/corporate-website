@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /about/index.html
+Allow: /contact/index.html
+Allow: /solutions/index.html
+Allow: /team/index.html
+Allow: /work/index.html
+Allow: /index.html
