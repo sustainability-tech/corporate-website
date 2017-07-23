@@ -35,7 +35,7 @@ create_nginx_vh_well_known() {
     listen 80 default_server;
     listen [::]:80 default_server;
 
-    root $WEBROOT
+    root $WEBROOT;
 
     location ~ /.well-known {
       allow all;
@@ -89,7 +89,7 @@ restart_nginx() {
 
 create_certificates() {
   echo "### Creating letsencrypt certificates"
-  if ! sudo certbot certonly --webroot --webroot-path=$WEBROOT -d $DOMAIN; then
+  if ! sudo certbot certonly --staging --webroot --webroot-path=$WEBROOT -d $DOMAIN; then
     exit 1
   fi
 }
