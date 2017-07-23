@@ -17,6 +17,21 @@ install_certbot() {
   setting_webroot
 }
 
+remove_vhosts_wellknown() {
+  sudo rm-rf $NGINX_ROOT/sites-available/well-known
+  sudo rm-rf $NGINX_ROOT/sites-enabled/well-known
+}
+
+remove_vhosts_default() {
+  sudo rm-rf $NGINX_ROOT/sites-available/default
+  sudo rm-rf $NGINX_ROOT/sites-enabled/default
+}
+
+remove_vhosts_domain() {
+  sudo rm-rf $NGINX_ROOT/sites-available/$DOMAIN
+  sudo rm-rf $NGINX_ROOT/sites-enabled/$DOMAIN
+}
+
 setting_webroot() {
   echo "### Using certbot webroot plugin"
   if [[ ! -d $WEBROOT_WELL_KNOWN_DIR ]]; then
@@ -28,9 +43,32 @@ setting_webroot() {
   fi
 }
 
+create_nginx_vh_wellknown() {
+  echo "### Creating nginx wellknown vhost"
+  sudo tee "$NGINX_ROOT/sites-available/wellknown" > /dev/null << EOF
+  server {
+    listen 80;
+    listen [::]:80;
+    server_name $DOMAIN;
+
+    root $WEBROOT;
+
+    location ~ /.well-known {
+      allow all;
+    }
+  }
+EOF
+}
+
+create_nginx_vh_wellknown_ln() {
+  echo "### Creating nginx wellknown Vhost symlink"
+  cd $NGINX_ROOT/sites-enabled
+  sudo ln -s $NGINX_ROOT/sites-available/wellknown $NGINX_ROOT/sites-enabled/wellknown
+}
+
 create_nginx_vh_default() {
   echo "### Creating nginx default vhost"
-  sudo tee "$NGINX_ROOT/sites-available/$DOMAIN" > /dev/null << EOF
+  sudo tee "$NGINX_ROOT/sites-available/default" > /dev/null << EOF
   server {
     listen 80;
     listen [::]:80;
@@ -48,8 +86,7 @@ EOF
 create_nginx_vh_default_ln() {
   echo "### Creating nginx default Vhost symlink"
   cd $NGINX_ROOT/sites-enabled
-  sudo rm -rf $DOMAIN
-  sudo ln -s $NGINX_ROOT/sites-available/$DOMAIN $NGINX_ROOT/sites-enabled/default
+  sudo ln -s $NGINX_ROOT/sites-available/default $NGINX_ROOT/sites-enabled/default
 }
 
 create_nginx_vh_domain() {
@@ -75,7 +112,6 @@ EOF
 create_nginx_vh_domain_ln() {
   echo "### Creating domain Vhost symlink"
   cd $NGINX_ROOT/sites-enabled
-  sudo rm -rf $DOMAIN
   sudo ln -s $NGINX_ROOT/sites-available/$DOMAIN $NGINX_ROOT/sites-enabled/$DOMAIN
 }
 
@@ -143,11 +179,15 @@ if ! hash certbot 2>/dev/null; then
   echo "### Certbot already installed, skipping"
   install_certbot
 fi
+remove_vhosts_domain
+remove_vhosts_default
+remove_vhosts_wellknown
 setting_webroot
-create_nginx_vh_default
-create_nginx_vh_default
+create_nginx_vh_wellknown
+create_nginx_vh_wellknown_ln
 restart_nginx
 create_certificates
+remove_vhosts_wellknown
 create_diffie_hellman
 create_ssl_snippet
 create_ssl_snippet_dh
