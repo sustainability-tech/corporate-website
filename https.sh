@@ -40,7 +40,7 @@ EOF
 
 create_nginx_vh_well_known_ln() {
   echo "Creating well_known Vhost symlink"
-  sudo cd $NGINX_ROOT/sites-enabled
+  cd $NGINX_ROOT/sites-enabled
   sudo ln -s $NGINX_ROOT/sites-available/well-known $NGINX_ROOT/sites-enabled/well-known
 }
 
@@ -68,7 +68,7 @@ EOF
 
 create_nginx_vh_domain_ln() {
   echo "Creating domain Vhost symlink"
-  sudo cd $NGINX_ROOT/sites-enabled
+  cd $NGINX_ROOT/sites-enabled
   sudo ln -s $NGINX_ROOT/sites-available/$DOMAIN" "$NGINX_ROOT/sites-enabled/$DOMAIN
 }
 
