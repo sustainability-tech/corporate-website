@@ -22,6 +22,7 @@ setting_webroot() {
   if [[ ! -d $WEBROOT_WELL_KNOWN_DIR ]]; then
     echo "### Creating $WEBROOT_WELL_KNOWN_DIR directory"
     sudo mkdir -p $WEBROOT_WELL_KNOWN_DIR
+    sudo chmod 777 $WEBROOT_WELL_KNOWN_DIR
   else
     echo "### $WEBROOT_WELL_KNOWN_DIR already exists, skipping"
   fi
@@ -31,6 +32,9 @@ create_nginx_vh_well_known() {
   echo "### Creating NGINX Vhost for well-known"
   sudo tee "$NGINX_ROOT/sites-available/well-known" > /dev/null << EOF
   server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
     root $WEBROOT
 
     location ~ /.well-known {
@@ -41,7 +45,7 @@ EOF
 }
 
 create_nginx_vh_well_known_ln() {
-  echo "Creating well_known Vhost symlink"
+  echo "### Creating well_known Vhost symlink"
   cd $NGINX_ROOT/sites-enabled
   sudo rm -rf well-known
   sudo ln -s $NGINX_ROOT/sites-available/well-known $NGINX_ROOT/sites-enabled/well-known
@@ -70,7 +74,7 @@ EOF
 }
 
 create_nginx_vh_domain_ln() {
-  echo "Creating domain Vhost symlink"
+  echo "### Creating domain Vhost symlink"
   cd $NGINX_ROOT/sites-enabled
   sudo rm -rf $DOMAIN
   sudo ln -s $NGINX_ROOT/sites-available/$DOMAIN" "$NGINX_ROOT/sites-enabled/$DOMAIN
