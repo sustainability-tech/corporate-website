@@ -18,18 +18,18 @@ install_certbot() {
 }
 
 remove_vhosts_wellknown() {
-  sudo rm-rf $NGINX_ROOT/sites-available/well-known
-  sudo rm-rf $NGINX_ROOT/sites-enabled/well-known
+  sudo rm -rf $NGINX_ROOT/sites-available/well-known
+  sudo rm -rf $NGINX_ROOT/sites-enabled/well-known
 }
 
 remove_vhosts_default() {
-  sudo rm-rf $NGINX_ROOT/sites-available/default
-  sudo rm-rf $NGINX_ROOT/sites-enabled/default
+  sudo rm -rf $NGINX_ROOT/sites-available/default
+  sudo rm -rf $NGINX_ROOT/sites-enabled/default
 }
 
 remove_vhosts_domain() {
-  sudo rm-rf $NGINX_ROOT/sites-available/$DOMAIN
-  sudo rm-rf $NGINX_ROOT/sites-enabled/$DOMAIN
+  sudo rm -rf $NGINX_ROOT/sites-available/$DOMAIN
+  sudo rm -rf $NGINX_ROOT/sites-enabled/$DOMAIN
 }
 
 setting_webroot() {
