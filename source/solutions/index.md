@@ -1,5 +1,6 @@
 ---
 title: Solutions
+excerpt: We provide Innovative Integrated web based applications to deliver data-driven sustainable solutions to socio-environmental problems. Our apps are project and process specific tools for integrating real time analysis with the concepts of adaptive management and streamlined work flows. Built into every app we develop are our core principles of functional simplicity, accessibility, customisabiltiy and scaleability
 date: 2017-06-29 11:01:49
 layout: solutions
 ---

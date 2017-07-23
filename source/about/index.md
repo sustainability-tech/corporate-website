@@ -2,6 +2,7 @@
 title: about
 date: 2017-06-29 10:59:35
 layout: about
+excerpt: We here at Sustainability Tech aim to build systems that enable greater transparency, efficiency and access to sustainability. By drawing on a diverse background of research, experience and technical skills, in the fields of data analysis, biodiversity conservation and sustainable development we aim to bring technical innovations the forefront of sustainability practices. From farmers to governments, across sectors and landscapes, Sustainability Tech—through 1’s and 0’s—hopes to contribute to a greener more sustainable planet for the benefit of all.
 ---
 
 # History
